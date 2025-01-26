@@ -30,4 +30,31 @@ def make_guess():
 
     if response.status_code == 200:  # If the response is 200
         results = response.json()
-        print(f"The guess is: {new_guess}")
+        # print(f"The guess is: {new_guess}")
+
+        # Process each letter's feedback
+        for result in results:
+            letter_idx = result['slot']
+            letter = result['guess']
+            letter_result = result['result']
+            print(f"Letter {letter} is {letter_result}")
+
+            if letter_result == 'correct':
+                new_guess[letter_idx] = letter  # Place the letter correctly
+            elif letter_result == 'present':  # Letter is present but not in the correct slot
+                if letter not in present_letters:
+                    present_letters[letter] = set()
+                # Add the current position to the set of positions to avoid in the future
+                present_letters[letter].add(letter_idx)
+
+                # Mark this slot as needing a new letter
+                new_guess[letter_idx] = '_'
+
+                all_correct = False  # Set to False if any letter is present
+
+            elif letter_result == 'absent':  # Letter is completely absent in the correct word
+                absent_letters.add(letter)
+                # Also mark this slot as needing a new letter
+                new_guess[letter_idx] = '_'
+                all_correct = False  # Set to False if any letter is absent
+
