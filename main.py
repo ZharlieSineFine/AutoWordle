@@ -58,3 +58,40 @@ def make_guess():
                 new_guess[letter_idx] = '_'
                 all_correct = False  # Set to False if any letter is absent
 
+    print(f"After checking, the new guess should be: {new_guess}")
+
+
+def generate_pattern(new_guess, present_letters, absent_letters):
+    pattern = ''
+    for i, letter in enumerate(new_guess):
+        if letter == '_':  # The letter is marked for updates
+            # Exclude letters known to be absent globally and previously tried letters at this position
+            excluded_letters = absent_letters.union(present_letters.get(letter, set()))
+            pattern += f"[{''.join(set(alphabet) - excluded_letters)}]"
+        else:
+            pattern += letter
+    return pattern
+
+
+def fill_blanks_intelligently(temp_guess, present_letters, absent_letters):
+    used_letters = set(temp_guess) - {'_'}
+
+
+def refine_guess():
+    """The refine_guess function will fill in the blanks in the new guess word, and then checks if it is a legit word."""
+    global new_guess, present_letters, absent_letters, WORDS, alphabet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    temp_guess = ['_'] * len(new_guess)
+
+    # Generate patterns based on present and absent letters
+    pattern = generate_pattern(new_guess, present_letters, absent_letters)
+
+    # Attempt to find matching words
+    matched_words = [word for word in WORDS if
+                     re.match(pattern, word) and all(letter not in absent_letters for letter in word)]
+    if matched_words:
+        new_guess = list(random.choice(matched_words))  # Choose one of the matching words
+
+    else:
+        # If no matching words, fill with a heuristic approach or random valid letters
+        fill_blanks_intelligently(temp_guess, present_letters, absent_letters)
