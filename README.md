@@ -8,8 +8,8 @@ This Python project automates the process of guessing words using the Wordle Fas
 
 I would like to thank the following resources and individuals for their invaluable assistance and tutorials, which greatly contributed to the completion of this project:
 
-- **baraltech**: Provided a comprehensive tutorial on working with APIs in Python, which was crucial for understanding how to interact with the Wordle FastAPI. Watch the tutorial on [YouTube](https://youtu.be/mJ2hPj3kURg?si=9RMtio2wfvKnf_O-).
-- **Caleb Curry**: Offered essential insights into Python programming and best practices that enhanced the functionality of this bot. Check out his guide [here](https://www.youtube.com/watch?v=qbLc5a9jdXo).
+- **baraltech**: Offered essential insights into Python programming and how to approach the Wordle game logic. Watch the tutorial on [YouTube](https://youtu.be/mJ2hPj3kURg?si=9RMtio2wfvKnf_O-).
+- **Caleb Curry**: Offered essential insights into REST API and how to access the API. Check out his guide [here](https://www.youtube.com/watch?v=qbLc5a9jdXo).
 - **GPT-4 Turbo on Poe**: For real-time coding assistance and troubleshooting. Access the session [here](https://poe.com/s/wDSdrXoftsin1bZ06Wz7).
 
 ## Features
