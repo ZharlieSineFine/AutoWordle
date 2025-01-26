@@ -83,6 +83,7 @@ def fill_blanks_intelligently(temp_guess, present_letters, absent_letters):
             temp_guess[i] = random.choice(list(possible_letters))
             used_letters.add(temp_guess[i])
 
+
 def refine_guess():
     """The refine_guess function will fill in the blanks in the new guess word, and then checks if it is a legit word."""
     global new_guess, present_letters, absent_letters, WORDS, alphabet
@@ -101,3 +102,17 @@ def refine_guess():
     else:
         # If no matching words, fill with a heuristic approach or random valid letters
         fill_blanks_intelligently(temp_guess, present_letters, absent_letters)
+
+
+def main():
+    while not all_correct:
+        make_guess()
+        while ''.join(new_guess) not in WORDS:
+            refine_guess()
+        print(f"Our latest guess is {new_guess}.")
+
+    print(f"The final correct guess is: {''.join(new_guess)}")
+
+
+if __name__ == "__main__":
+    main()
