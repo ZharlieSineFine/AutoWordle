@@ -24,3 +24,5 @@ The bot starts with a default guess and uses the feedback from the API to adjust
 ## Contact
 
 For more information, feedback, or inquiries, feel free to contact me at [raphzhao@gmail.com](mailto:raphzhao@gmail.com).
+
+My LinkedIn profile [Zhao Changlin](https://www.linkedin.com/in/charlie5885/)
