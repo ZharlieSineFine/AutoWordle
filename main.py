@@ -62,6 +62,7 @@ def make_guess():
 
 
 def generate_pattern(new_guess, present_letters, absent_letters):
+    """This function will generate a pattern that tells the correct letters in our guess."""
     pattern = ''
     for i, letter in enumerate(new_guess):
         if letter == '_':  # The letter is marked for updates
@@ -74,8 +75,13 @@ def generate_pattern(new_guess, present_letters, absent_letters):
 
 
 def fill_blanks_intelligently(temp_guess, present_letters, absent_letters):
+    """This function fills in the blanks with letters that are not absent nor used."""
     used_letters = set(temp_guess) - {'_'}
-
+    for i in range(len(temp_guess)):
+        if temp_guess[i] == '_':
+            possible_letters = {ch for ch in alphabet if ch not in absent_letters and ch not in used_letters}
+            temp_guess[i] = random.choice(list(possible_letters))
+            used_letters.add(temp_guess[i])
 
 def refine_guess():
     """The refine_guess function will fill in the blanks in the new guess word, and then checks if it is a legit word."""
